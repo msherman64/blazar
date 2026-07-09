@@ -16,14 +16,14 @@
 """Add flavor before end column
 
 Revision ID: a167bcf47857
-Revises: 95bd85fe13f0
+Revises: 553383923ca0
 Create Date: 2025-01-27 19:02:30.182818
 
 """
 
 # revision identifiers, used by Alembic.
 revision = 'a167bcf47857'
-down_revision = '95bd85fe13f0'
+down_revision = '553383923ca0'
 
 from alembic import op
 import sqlalchemy as sa
