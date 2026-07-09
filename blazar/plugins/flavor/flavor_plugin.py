@@ -32,6 +32,9 @@ from blazar.utils.openstack import placement
 CONF = cfg.CONF
 LOG = logging.getLogger(__name__)
 
+
+before_end_options = ['', 'snapshot', 'default', 'email']
+
 QUERY_TYPE_ALLOCATION = 'allocation'
 
 
@@ -64,6 +67,11 @@ class FlavorPlugin(base.BasePlugin):
 
     def allocation_candidates(self, reservation):
         """Return a list of candidate host_ids."""
+        if 'before_end' not in reservation:
+            reservation['before_end'] = 'default'
+        if reservation['before_end'] not in before_end_options:
+            raise mgr_exceptions.MalformedParameter(param='before_end')
+
         host_ids, _ = self._pick_hosts(reservation)
         return host_ids
 
